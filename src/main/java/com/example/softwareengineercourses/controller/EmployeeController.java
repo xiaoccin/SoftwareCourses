@@ -56,6 +56,7 @@ public class EmployeeController {
 
     @RequestMapping("addEmployee")
     boolean addEmployee(@RequestBody Employee employee){
+        employee.setPassword(employee.getTelephone());
         return service.save(employee);
     }
 }
