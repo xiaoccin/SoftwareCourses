@@ -102,6 +102,11 @@ public class ScheduleController {
         return scheduleInfos;
     }
 
+    @RequestMapping("addSchedule")
+    public boolean addSchedule(@RequestBody Schedule schedule){
+        return  scheduleService.save(schedule);
+    }
+
 
 
 }

@@ -35,4 +35,9 @@ public class EmployeeAttendanceController {
     boolean updateById(@RequestBody EmployeeAttendance attendance){
         return attendanceService.updateById(attendance);
     }
+
+    @RequestMapping("addEmployeeAttendance")
+    boolean addEmployeeAttendance(@RequestBody EmployeeAttendance attendance){
+        return  attendanceService.save(attendance);
+    }
 }

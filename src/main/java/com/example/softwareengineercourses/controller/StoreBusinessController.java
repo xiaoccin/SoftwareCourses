@@ -1,7 +1,6 @@
 package com.example.softwareengineercourses.controller;
 
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.example.softwareengineercourses.mybatis.pojo.Schedule;
+
 import com.example.softwareengineercourses.mybatis.pojo.StoreBusiness;
 import com.example.softwareengineercourses.mybatis.service.StoreBusinessService;
 
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Wrapper;
 import java.util.*;
 
 @RestController
@@ -138,6 +136,11 @@ public class StoreBusinessController {
         removeMap.put("store_ID",storeBusiness.getId());
         removeMap.put("date",storeBusiness.getTime());
         return  service.removeByMap(removeMap);
+    }
+
+    @RequestMapping("addStoreBusiness")
+    public boolean addStoreBusiness(@RequestBody StoreBusiness storeBusiness){
+        return service.save(storeBusiness);
     }
 
 }

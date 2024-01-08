@@ -53,4 +53,9 @@ public class EmployeeController {
         employeeMap.put("store_id",storeId);
         return service.listByMap(employeeMap);
     }
+
+    @RequestMapping("addEmployee")
+    boolean addEmployee(@RequestBody Employee employee){
+        return service.save(employee);
+    }
 }

@@ -36,4 +36,9 @@ public class StoreController {
         return storeService.removeById(store);
     }
 
+    @RequestMapping("addStore")
+    boolean addStore(@RequestBody Store store){
+        return storeService.save(store);
+    }
+
 }
