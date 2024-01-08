@@ -4,15 +4,12 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.softwareengineercourses.mybatis.pojo.*;
 import com.example.softwareengineercourses.mybatis.service.EmployeeService;
 import com.example.softwareengineercourses.mybatis.service.ScheduleService;
-import com.example.softwareengineercourses.mybatis.service.StoreBusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+
 import java.util.*;
 
 @RestController
@@ -23,7 +20,7 @@ public class ScheduleController {
     @Autowired
     private EmployeeService employeeService;
     @Autowired
-    private StoreBusinessService storeBusinessService;
+
 
     @RequestMapping("getAll")
     public List<Schedule> getAll(){
@@ -79,9 +76,9 @@ public class ScheduleController {
     }
 
     /**
-     * 自动排版
+     * 自动排班
      * @param store 所需排班的store
-     * @return
+     * @return scheduleInfos
      */
     @RequestMapping("autoSchedule")
     public List<ScheduleInfo> autoSchedule(@RequestBody Store store){
