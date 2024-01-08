@@ -19,7 +19,7 @@ public class Employee {
     @TableField("phone")
     private String telephone;
     //职位
-    @TableField("position")
+    @TableField("occupation")
     private String occupation;
     //所属门店
     @TableField("store_ID")
