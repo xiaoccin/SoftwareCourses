@@ -23,8 +23,18 @@ public class ScheduleController {
 
 
     @RequestMapping("getAll")
-    public List<Schedule> getAll(){
-        return scheduleService.list();
+    public List<ScheduleInfo> getAll(){
+        List<Schedule> schedules =  scheduleService.list();
+        List<ScheduleInfo> scheduleInfos = new ArrayList<>();
+        for (Schedule s:schedules
+             ) {
+            ScheduleInfo temp = new ScheduleInfo();
+            temp.setName(employeeService.getById(s.getEmployeeId()).getName());
+            temp.setDate(s.getDate());
+            temp.setTimeSlot(s.getTimeSlot());
+            scheduleInfos.add(temp);
+        }
+        return scheduleInfos;
     }
 
     //员工个人排班安排
@@ -87,7 +97,7 @@ public class ScheduleController {
         List<Employee> employees = employeeService.listByMap(map);
         System.out.println(employees);
         List<ScheduleInfo> scheduleInfos = new ArrayList<>();
-        String timeSlot[] = {"morning","afternoon","evening"};
+        String timeSlot[] = {"上午","下午","晚上"};
         for(int i=1;i<=7;i++){
             for (int j=0;j<3;j++){
                 ScheduleInfo scheduleInfo = new ScheduleInfo();
