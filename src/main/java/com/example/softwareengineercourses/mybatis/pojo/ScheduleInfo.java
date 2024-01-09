@@ -4,6 +4,8 @@ import lombok.Data;
 
 @Data
 public class ScheduleInfo {
+
+    String employeeId;
     //日期
     String date;
     //时间段
@@ -14,4 +16,6 @@ public class ScheduleInfo {
     String occupation;
     //店面
     String storeId;
+
+    String dayOfWeek;
 }

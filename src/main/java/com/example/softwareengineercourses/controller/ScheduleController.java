@@ -32,6 +32,8 @@ public class ScheduleController {
             temp.setName(employeeService.getById(s.getEmployeeId()).getName());
             temp.setDate(s.getDate());
             temp.setTimeSlot(s.getTimeSlot());
+            temp.setStoreId(s.getStoreId());
+            temp.setDayOfWeek(s.getDayOfWeek());
             scheduleInfos.add(temp);
         }
         return scheduleInfos;
