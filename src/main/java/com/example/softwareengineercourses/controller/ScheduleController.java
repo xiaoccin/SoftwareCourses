@@ -139,25 +139,25 @@ public class ScheduleController {
         int iWeek = ((d + 2 * m + 3 * (m + 1) / 5 + y + y / 4 - y / 100 + y / 400) % 7);
         switch (iWeek){
             case 0:
-                result = "星期一";
+                result = "Mon";
                 break;
             case 1:
-                result = "星期二";
+                result = "Tues";
                 break;
             case 2:
-                result = "星期三";
+                result = "Wed";
                 break;
             case 3:
-                result = "星期四";
+                result = "Thur";
                 break;
             case 4:
-                result = "星期五";
+                result = "Fri";
                 break;
             case 5:
-                result = "星期六";
+                result = "Sat";
                 break;
             case 6:
-                result = "星期日";
+                result = "Sun";
                 break;
         }
         return result;
