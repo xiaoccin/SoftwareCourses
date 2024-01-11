@@ -106,6 +106,7 @@ public class ScheduleController {
                 scheduleInfo.setStoreId(store.getId());
                 scheduleInfo.setName(employees.get(j).getName());
                 scheduleInfo.setDate("2024-01-0"+i);
+                scheduleInfo.setDayOfWeek(getDayOfWeek(scheduleInfo.getDate()));
                 scheduleInfo.setTimeSlot(timeSlot[j]);
                 scheduleInfo.setOccupation(employees.get(j).getOccupation());
                 scheduleInfos.add(scheduleInfo);
@@ -119,6 +120,48 @@ public class ScheduleController {
         return  scheduleService.save(schedule);
     }
 
+
+    /**
+     * 通过基姆拉尔森日期公式获得日期
+     * @param day 日期
+     * @return 星期
+     */
+    public String getDayOfWeek(String day){
+        int y = 2024;
+        int m = Integer.parseInt(day.substring(5,6));
+        int d = Integer.parseInt(day.substring(8,9));
+        String result = new String();
+        if(m==1||m==2){
+            m+=12;
+            y--;
+        }
+
+        int iWeek = ((d + 2 * m + 3 * (m + 1) / 5 + y + y / 4 - y / 100 + y / 400) % 7);
+        switch (iWeek){
+            case 0:
+                result = "星期一";
+                break;
+            case 1:
+                result = "星期二";
+                break;
+            case 2:
+                result = "星期三";
+                break;
+            case 3:
+                result = "星期四";
+                break;
+            case 4:
+                result = "星期五";
+                break;
+            case 5:
+                result = "星期六";
+                break;
+            case 6:
+                result = "星期日";
+                break;
+        }
+        return result;
+    }
 
 
 }

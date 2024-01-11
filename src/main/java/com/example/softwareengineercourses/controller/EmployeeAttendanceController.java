@@ -32,7 +32,7 @@ public class EmployeeAttendanceController {
 
     @RequestMapping("getById")
     List<EmployeeAttendance> getById(@RequestBody Employee employee){
-        System.out.println(employee);
+
         String employeeId = employee.getId();
         Map<String,Object> objectMap = new HashMap<>();
         objectMap.put("employee_ID",employeeId);
