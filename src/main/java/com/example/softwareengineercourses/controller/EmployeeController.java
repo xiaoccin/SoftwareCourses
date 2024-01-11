@@ -59,4 +59,9 @@ public class EmployeeController {
         employee.setPassword(employee.getTelephone());
         return service.save(employee);
     }
+
+    @RequestMapping("deleteEmployee")
+    boolean deleteEmployee(@RequestBody Employee employee){
+        return service.removeById(employee);
+    }
 }

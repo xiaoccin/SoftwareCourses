@@ -75,4 +75,11 @@ public class EmployeeAttendanceController {
     List<Appeal> getAllAppeal(){
         return appealService.list();
     }
+
+
+    //添加打卡情况
+    @RequestMapping("addAttendance")
+    boolean addAttendance(@RequestBody EmployeeAttendance attendance){
+        return attendanceService.save(attendance);
+    }
 }

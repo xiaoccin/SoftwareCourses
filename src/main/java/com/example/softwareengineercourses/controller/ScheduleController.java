@@ -29,6 +29,7 @@ public class ScheduleController {
         for (Schedule s:schedules
              ) {
             ScheduleInfo temp = new ScheduleInfo();
+            temp.setEmployeeId(s.getEmployeeId());
             temp.setName(employeeService.getById(s.getEmployeeId()).getName());
             temp.setDate(s.getDate());
             temp.setTimeSlot(s.getTimeSlot());
@@ -67,6 +68,13 @@ public class ScheduleController {
         wrapper.allEq(objectMap,false);
         return scheduleService.update(schedule,wrapper);
     }
+    //根据店面时间段删除值班
+    @RequestMapping("deleteByTime")
+    public boolean deleteSchedule(@RequestBody Schedule schedule){
+        return scheduleService.removeById(schedule);
+    }
+
+
     //按日查询排班表
     @RequestMapping("getByDate")
     public List<ScheduleInfo> getScheduleInfoByDay(@RequestBody Schedule schedule){
@@ -117,12 +125,13 @@ public class ScheduleController {
 
     @RequestMapping("addSchedule")
     public boolean addSchedule(@RequestBody Schedule schedule){
+        System.out.println(schedule);
         return  scheduleService.save(schedule);
     }
 
 
     /**
-     * 通过基姆拉尔森日期公式获得日期
+     * 通过基姆拉尔森日期公式获得星期
      * @param day 日期
      * @return 星期
      */
